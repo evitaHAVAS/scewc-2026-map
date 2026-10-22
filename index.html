@@ -217,7 +217,7 @@ function render(){const L_=$('#listView');let n=0,h='';
   L_.innerHTML=h+miss+`<div class="foot">Atjaunots ${D.generated}. Atzīmes glabājas šajā ierīcē.</div>`;
   $$('#listView .row').forEach(r=>{r.addEventListener('click',()=>select(r.dataset.code,'list'));r.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();select(r.dataset.code,'list')}})});
   const done=items.filter(({e})=>visited.has(String(e.id))).length;
-  $('#meta').textContent=q||active.size!==2||!active.has('high')||!active.has('medium')?`${n} rādīti`:`${items.length} mērķi · ${done} apmeklēti`}
+  $('#meta').textContent=q||active.size!==2||!active.has('high')||!active.has('medium')?`${n} rādīti`:`${items.filter(({e})=>cls(e)!=='comp').length} mērķi · ${done} apmeklēti`}
 
 /* ---------- card ---------- */
 function card(s){const ex=[...s.ex].sort((a,b)=>rank(b)-rank(a));const top=ex.filter(e=>cls(e)),rest=ex.filter(e=>!cls(e));
